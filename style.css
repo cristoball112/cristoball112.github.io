@@ -36,3 +36,9 @@ h2 {
     box-shadow: 0 0 40px #f293ff;
     animation: glow-border 1.5% infinite alternate;
 }
+
+@keyframes glow-border {
+    from { box-shadow: 0 0 20px #f293ff; }
+    to { box-shadow: 0 0 60px #f293ff; }
+}
+
