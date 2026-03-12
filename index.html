@@ -21,16 +21,9 @@
         <h3>Identifica canciones con solo una pista de Audio totalmente gratis</h3>
     </div>
 
-    <script>
-        const boton = document.getElementById('btnMicrofono');
-        boton.addEventListener('click', async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                alert("Escuchando...");
-            } catch (err) {
-                alert("Para identificar permita acceso al microfono");
-            }
-        });
+    <script src="script.js"></script>
+</body>
+</html>
     </script>
 </body>
 </html>
