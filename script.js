@@ -1,35 +1,32 @@
 const boton = document.getElementById('btnMicrofono');
 
-// Configuramos el motor de reconocimiento fuera para que esté listo
+// COMPLEMENTO YOUTUBE (Configuración externa)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition ? new SpeechRecognition() : null;
+const recognition = new SpeechRecognition();
+recognition.lang = 'es-ES';
 
-if (recognition) {
-    recognition.lang = 'es-ES';
-    
-    // Aquí es donde sucede la magia de YouTube
-    recognition.onresult = (event) => {
-        const textoEscuchado = event.results[0][0].transcript;
-        window.location.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(textoEscuchado)}`;
-    };
-}
+recognition.onresult = (event) => {
+    const texto = event.results[0][0].transcript;
+    window.location.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(texto)}`;
+};
 
+// TU FUNCIÓN ORIGINAL (INTACTA)
 boton.addEventListener('click', async () => {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Si acepta el permiso
+        alert("Escuchando..."); 
         
-        // Primero activamos la escucha de YouTube
-        if (recognition) {
-            recognition.start();
-        }
+        // ACTIVACIÓN DE BÚSQUEDA (Solo se dispara si el try tiene éxito)
+        recognition.start();
 
-        // Luego mostramos el alert (Ten en cuenta que mientras el alert esté, no buscará)
-        alert("Escuchando... Di el nombre de la canción y luego pulsa Aceptar"); 
-
-        // IMPORTANTE: No detenemos el stream aquí para que el micro siga encendido
-        // stream.getTracks().forEach(track => track.stop()); // Esta línea causaba el fallo
+        // Es buena práctica detener el micro si solo estás probando el permiso
+        stream.getTracks().forEach(track => track.stop());
 
     } catch (err) {
+        // Al dejar esto vacío (o solo con un console.log), 
+        // si el usuario cierra con la "X", no saldrá ningún mensaje feo.
+        // ¡Y al volver a hacer clic, el navegador preguntará de nuevo!
         console.log("El usuario cerró el permiso sin decidir.");
     }
 });
