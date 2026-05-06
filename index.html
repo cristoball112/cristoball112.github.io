@@ -8,22 +8,37 @@
 </head>
 <body>
 
-    <h1 class="titulo-fijo">Identificador de Musica Online</h1>
+    <!-- Nuevo: Sección de Login -->
+    <div id="login-overlay" class="overlay">
+        <div class="login-box">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" id="userInput" placeholder="Nombre de usuario">
+            <input type="password" id="passInput" placeholder="Contraseña">
+            <button id="btnLogin">Ingresar</button>
+        </div>
+    </div>
+
+    <h1 class="titulo-fijo" id="tituloApp">Identificador de Música Online</h1>
 
     <div class="contenedor-principal">
+        <!-- Botón de salir -->
+        <button id="btnLogout" class="btn-logout" style="display:none;">Cerrar Sesión</button>
+        
         <div class="boton" id="btnMicrofono">
             <img src="images/puchale.png" alt="Botón de escucha">
         </div>
     </div>
 
-    <div class="textos-inferiores">
-        <h2>Toca para escuchar <br> y descubrir</h2>
+    <div id="resultado" class="textos-inferiores">
+        <h2 id="bienvenida">Toca para escuchar <br> y descubrir</h2>
         <h3>Identifica canciones con solo una pista de Audio totalmente gratis</h3>
     </div>
 
+    <div id="historial-container">
+        <h2>Historial de <span id="nombreUsuarioHistorial"></span></h2>
+        <ul id="listaHistorial"></ul>
+    </div>
+
     <script src="script.js"></script>
-</body>
-</html>
-    </script>
 </body>
 </html>
