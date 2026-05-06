@@ -1,3 +1,4 @@
+/* --- Estilos base --- */
 body {
     margin: 0;
     padding: 0;
@@ -9,18 +10,16 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: white;
-    min-height: 150vh; /* Permite hacer un poco de scroll */
+    min-height: 150vh;
 }
 
-h1 {
+/* --- Títulos efecto Neón --- */
+h1, h2, h3 {
     color: #ffffff;
-    background-color: rgb(31, 23, 31);
-    border-radius: 20px;
-    padding: 10px;
-    position: sticky;
+    text-shadow: 0 0 7px #fff, 0 0 10px #ff5dd9, 0 0 21px #fff, 0 0 42px #ff4eff;
 }
 
-
+/* --- Botón principal --- */
 .contenedor-principal {
     display: flex;
     justify-content: center;
@@ -42,51 +41,93 @@ h1 {
     transition: transform 0.2s ease;
 }
 
-.boton img {
-    width: 100%;
-    height: auto;
-}
+.boton img { width: 100%; height: auto; }
 
-.boton:active {
-    transform: scale(0.95); /* Efecto cuando haga el click */
-}
+.boton:active { transform: scale(0.95); }
 
 @keyframes glow-border {
-    from {
-        box-shadow: 0 0 20px #f293ff, 0 0 10px #8afffd;
-    }
-    to {
-        box-shadow: 0 0 60px #f293ff, 0 0 30px #8afffd;
-    }
+    from { box-shadow: 0 0 20px #ffffff, 0 0 10px #00ddff; }
+    to { box-shadow: 0 0 60px #ff4eff, 0 0 30px #8afffd; }
 }
 
-h3 {
-    color: #f9cdff;
-    padding 50px;
+/* --- Historial Centrado --- */
+#historial-container {
+    margin: 40px auto; 
+    width: 80%;       
+    max-width: 600px; 
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px #f293ff;
 }
 
-h2 {
-    color:#f9cdff;
+#historial-container h2 {
+    font-size: 18px;
+    text-shadow: none; /* Sin brillo para que sea legible */
+    color: #f293ff;
+}
+
+#listaHistorial {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+#listaHistorial li {
+    font-size: 15px;
+    color: #ffffff;
     padding: 10px;
-    font-size: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* --- Login Overlay --- */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
 
-<title>Mi Página</title>
+.login-box {
+    background: rgba(20, 20, 20, 0.6);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #f293ff;
+    border: 1px solid #ff5dd9;
+    width: 300px;
+}
 
-<!-- estilos generales -->
-<link rel="stylesheet" href="main.css">
+.login-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
 
-<!-- celulares -->
-<link rel="stylesheet" href="mobile.css" media="screen and (max-width:599px)">
+.login-box button, .btn-logout {
+    padding: 10px 20px;
+    background: #ff5dd9;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px #ff5dd9;
+}
 
-<!-- tablets -->
-<link rel="stylesheet" href="tablet.css" media="screen and (min-width:600px)">
+.btn-logout { position: fixed; top: 20px; right: 20px; }
 
-<!-- computadoras -->
-<link rel="stylesheet" href="desktop.css" media="screen and (min-width:1024px)">
+/* --- Responsivo --- */
+@media screen and (max-width: 599px) {
+    .boton { width: 220px; height: 220px; }
+    h1 { font-size: 20px; }
+}
 
-</head>
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+    .boton { width: 300px; height: 300px; }
+}
